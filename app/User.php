@@ -9,6 +9,8 @@ use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
+     
+
     use HasApiTokens, Notifiable;
 
     /**
@@ -16,8 +18,15 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    const ROLE_USER = 2;
+    const ROLE_ADMIN = 1;
+    const OTP_VERIFIED = 1;
+
+
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role_id','avatar','registered_at','otp'
     ];
 
     /**
@@ -41,4 +50,15 @@ class User extends Authenticatable
     public function AauthAcessToken(){
         return $this->hasMany('\App\OauthAccessToken');
     }
+
+    public static function sendMailOtp()
+    {
+
+    }
+
+    public static function sendMailForRegistration($email)
+    {
+
+    }
+
 }

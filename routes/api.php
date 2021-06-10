@@ -13,16 +13,27 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('registration','Api\CustomController@registration');
-Route::post('login','Api\CustomController@login');
-Route::post('password/email','Api\CustomController@forgotPassword');
-Route::post('logout','Api\CustomController@logoutApi');
+Route::post('invite', 'Api\CustomController@sendInvitation');
+
+Route::post('registration', 'Api\CustomController@registration');
+
+Route::post('login', 'Api\CustomController@login');
+
+Route::post('password/email', 'Api\CustomController@forgotPassword');
+
+Route::post('logout', 'Api\CustomController@logoutApi');
+
 Route::post('password/reset', 'Api\PasswordResetController@passwordReset');
+
 Route::get('password/email-find/{token}', 'Api\PasswordResetController@emailFind');
+
 Route::post('password/reset-confirm', 'Api\PasswordResetController@resetConfirm');
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::get('hello', 'Api\CustomController@hello');
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('editprofile/{id}', 'Api\CustomController@profileedit');
+    Route::post('verifyotp', 'Api\CustomController@verifyOtp');
 });
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
