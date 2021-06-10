@@ -1,6 +1,16 @@
 # Laravel API- Registration, Login and Forgot Password verify Account 
 ##### api authentication with laravel passport
 
+#### clone from repository 
+git clone project url 
+
+#### composer update 
+#### php artisan migrate 
+#### php artisan serve
+
+
+### follow the api doc 
+
 
 #API DOC 
 
